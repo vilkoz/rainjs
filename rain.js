@@ -56,9 +56,9 @@ var mx;
 
 window.addEventListener('mousemove', function(e) {
 	if (mx) {
-		var shift = e.screenX - mx > 0 ? 5 : -5;
+		var shift = e.screenX - mx > 0 ? 0.1 : -0.1;
 		pArray.map(function(particle) {
-			particle.dx = shift;
+			particle.dx += shift;
 		});
 	}
 	mx = e.screenX;
