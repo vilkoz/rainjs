@@ -1,6 +1,14 @@
 var canvas = document.getElementById('canvas');
-canvas.width = document.querySelector('body').clientWidth;
+canvas.width = document.body.clientWidth;
+canvas.height = Math.max(
+	document.body.clientHeight,
+	document.documentElement.clientHeight
+);
 var ctx = canvas.getContext('2d');
+ctx.shadowColor = 'red';
+ctx.shadowOffsetX = 0;
+ctx.shadowOffsetY = 0;
+ctx.shadowBlur = 10;
 
 function random(from, to) {
 	return Math.floor((Math.random() * (to - from)) + from);
@@ -41,7 +49,7 @@ class Particle {
 		this.ctx.translate(this.x, this.y);
 		this.ctx.rotate(-this.dx / this.velocity);
 		this.ctx.fillStyle = 'purple';
-		this.ctx.fillRect(this.x, this.y, 1 * this.size, 7 * this.size);
+		this.ctx.fillRect(this.x, this.y, this.size, 7 * this.size);
 		this.ctx.rotate(this.dx / this.velocity);
 		this.ctx.translate(-this.x, -this.y);
 	}
